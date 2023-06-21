@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<div lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+    <title>Weather forecast</title>
+</head>
+<body>
+<div class="weather-app">
+    <div class="container">
+            <h3 class="brand">the weather</h3>
+            <div>
+                <h1 class="temp">16&#176;</h1>
+                <div class="city-time">
+                <h1 class="name">London</h1>
+            <small>
+                <span class="time">06:09</span>
+                -
+                <span class="date">
+                    Tuesday June 20
+                </span>
+            </small>
+        </div>
+            <div class="weather">
+                <img
+                    src="./icons/day/Clear sky.png"
+                    class="icon"
+                    alt="icon"
+                    width="50"
+                    height="50"
+                    />
+                    <span class="condition">Cloudy</span>
+            </div>
+        </div>
+    </div>
+        <div class="panel">
+    <form id="locationInput">
+        <input type="text" class="search" placeholder="Search Location..."/>
+        <button type="submit" class="submit">
+            <i class="fas fa-search">Search</i>
+        </button>
+    </form>
+    <ul class="cities">
+        <li class="city">New York</li>
+        <li class="city">Kiev</li>
+        <li class="city">Zaporozhye</li>
+        <li class="city">Tokio</li>
+    </ul>
+    <ul class="details">
+        <h4>Weather Details</h4>
+        <li><span>Cloudy</span> <span class="cloud">89%</span></li>
+        <li><span>Humidity</span> <span class="humidity">64%</span></li>
+        <li><span>Wind</span> <span class="wind">8km/h</span></li>
+    </ul>
+    </div>
+</div>
+
+
+
+
+<script src="main.js"></script>
+
+
+
+
+
+
+</body>
+</html>
