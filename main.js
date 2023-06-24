@@ -22,7 +22,8 @@ const apiKey = 'b6ebbd7f40394af0893114308232106';
 let  run = false;
 let isFahrenheit = false;
 
-let selectedCity = "";
+let selectedCity = "London";
+fetchWeatherData(selectedCity,true);
 // Отримує поточні дані про погоду для вказаного міста
 function fetchWeatherData(city,run) {
     const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
