@@ -11,28 +11,44 @@
 <body>
 <div class="weather-app">
     <div class="container">
-            <h3 class="brand">the weather</h3>
+            <h3 class="title"> Weather forecast</h3>
+            <div class="unit-buttons">
+                <button class="unit-F">F</button>
+                <button class="unit-C">C</button>
+                <button class="today-button">Today</button>
+                <button class="three-day-button">3-Day</button>
+                <button class="seven-day-button">7-Day</button>
+                <button class="hide-button">Hide Info</button>
+            </div>
+            <div class = "seven-weather">
+                <ul class="seven-weather-details"></ul>
+            </div>
+            <div class="three-weather">
+                <ul class="three-weather-details">
+                </ul>
+            </div>
+            
             <div>
-                <h1 class="temp">16&#176;</h1>
+                <h1 class="temp">Loading...&#176;</h1>
                 <div class="city-time">
-                <h1 class="name">London</h1>
+                <h1 class="name">Loading</h1>
             <small>
-                <span class="time">06:09</span>
+                <span class="time">loading...</span>
                 -
                 <span class="date">
-                    Tuesday June 20
+                    loading...
                 </span>
             </small>
         </div>
             <div class="weather">
                 <img
-                    src="./icons/day/Clear sky.png"
+                    src="./icons/day/113.png"
                     class="icon"
                     alt="icon"
                     width="50"
                     height="50"
                     />
-                    <span class="condition">Cloudy</span>
+                    <span class="condition">Loading...</span>
             </div>
         </div>
     </div>
@@ -46,8 +62,8 @@
     <ul class="cities">
         <li class="city">New York</li>
         <li class="city">Kiev</li>
-        <li class="city">Zaporozhye</li>
-        <li class="city">Tokio</li>
+        <li class="city">Zaporizhzhya</li>
+        <li class="city">Tokyo</li>
     </ul>
     <ul class="details">
         <h4>Weather Details</h4>
@@ -55,17 +71,15 @@
         <li><span>Humidity</span> <span class="humidity">64%</span></li>
         <li><span>Wind</span> <span class="wind">8km/h</span></li>
     </ul>
+    <ul class="weather-details">
+    </ul>
     </div>
+    <footer>
+        <p>&copy; 2023 Weather Forecast App</p>
+    </footer>
 </div>
 
-
-
-
 <script src="main.js"></script>
-
-
-
-
 
 
 </body>

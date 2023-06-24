@@ -9,16 +9,113 @@
 h1, h3 {
     font-weight: 400;
 }
+.title{
+    font-size: 40px;
+}
+.unit-F{
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+.unit-F:hover{
+    color: #ffcc00;
+}
+.unit-f.active,
+.unit-c.active {
+background-color: #bd4b4b;
+}
+.unit-C{
+    position: absolute;
+    top: 15px;
+    left: 60px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+.unit-C:hover{
+    color: #ffcc00;
+}
+.hide-button{
+    position: absolute;
+    top: 140px;
+    left: 100px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+.hide-button:hover{
+    color: #e74d1e;
+}
+.today-button{
+    position: absolute;
+    top: 90px;
+    left: 500px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+.today-button:hover{
+    color: #e74d1e;
+}
+.three-day-button{
+    position: absolute;
+    top: 90px;
+    left: 600px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+.three-day-button:hover{
+    color: #e74d1e;
+}
+.seven-day-button{
+    position: absolute;
+    top: 90px;
+    left: 700px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+.seven-day-button:hover{
+    color: #e74d1e;
+}
 .weather-app{
     min-height: 100vh;
-    background-image: url(./Images/day/cloudy.avif);
+    background-image: url(./images/day/cloudy.avif);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
     position: relative;
     transition: 500ms;
-    opacity: 1; /*change to 0 once the whole app is finished*/
+    opacity: 1;
 }
 .weather-app::before{
     content: "";
@@ -140,19 +237,108 @@ h1, h3 {
     justify-content: space-between;
     align-items: center;
 }
+.weather-details li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.three-weather {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.three-weather-details {
+    display: none;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.three-weather-details li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 4em;
+}
+
+.seven-weather-details {
+    display: none;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
 
 
+@media(max-width:1300px){
+    .seven-day-button{
+        display: none;
+    }
+}
+@media(max-width:1180px){
+    .three-day-button {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 16px;
+    }
+}
+@media  (max-width:1000px) {
+    .today-button {
+        top: 20px;
+        left: 30%;
+        transform: translateX(-50%);
+        font-size: 16px;
+    }
+}
 @media  (max-width:800px) {
     .panel,
     .container{
         position: relative;
         width: 100%;
-        top: initial; 
+        top: initial;
     }
+        .today-button {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 16px;
+        }
+        .three-day-button {
+            display: none;
+        }
 }
 @media  (max-width:500px) {
     html{
         font-size: 12px;
+    }
+    .today-button {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 @media (max-width:300px){
