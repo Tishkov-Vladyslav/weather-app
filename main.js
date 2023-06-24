@@ -19,22 +19,18 @@ const todayButton = document.querySelector('.today-button');
 const threeDayButton = document.querySelector('.three-day-button');
 const sevenDayButton = document.querySelector('.seven-day-button');
 const apiKey = 'b6ebbd7f40394af0893114308232106';
-
+let  run = false;
 let isFahrenheit = false;
 
 let selectedCity = "";
 // Отримує поточні дані про погоду для вказаного міста
-function fetchWeatherData(city) {
+function fetchWeatherData(city,run) {
     const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if (isFahrenheit) {
-                temp.innerHTML = data.current.temp_f.toFixed(1) + "&#176;F";
-            } else {
-                temp.innerHTML = data.current.temp_c.toFixed(1) + "&#176;C";
-            }
+            updateTemperature();
             temp.dataset.celsius = data.current.temp_c.toFixed(1);
             temp.dataset.fahrenheit = data.current.temp_f.toFixed(1);
             updateTemperature();
@@ -54,6 +50,22 @@ function fetchWeatherData(city) {
             windOutput.innerHTML = data.current.wind_kph + "km/h";
             let timeOfDay = data.current.is_day ? "day" : "night";
             const code = data.current.condition.code;
+            if(run){
+                if (isHourlyWeatherVisible) {
+                const weatherDetails = document.querySelector('.weather-details');
+                weatherDetails.style.display = 'none';
+                isHourlyWeatherVisible = false;
+            }
+            if (isThreeDayWeatherVisible) {
+                const threeweatherdeatails = document.querySelector('.three-weather-details');
+                threeweatherdeatails.style.display = 'none';
+                isThreeDayWeatherVisible = false;
+            }
+            if (isSevenDayWeatherVisible) {
+                const sevenWeatherDetails = document.querySelector('.seven-weather-details');
+                sevenWeatherDetails.style.display = 'none';
+                isSevenDayWeatherVisible = false;
+            }}
             if (code == 1000) {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/clearsky.avif)`;
                 btn.style.background = "#e5ba92";
@@ -99,13 +111,12 @@ function fetchWeatherData(city) {
                 app.style.backgroundImage = `url(./images/${timeOfDay}/snow.avif)`;
                 btn.style.background = "#4d72aa";
             }
-
+            
             if (timeOfDay == "night") {
                 btn.style.background = "#181e27";
                 app.style.backgroundImage = `url(./images/${timeOfDay}/clearsky.avif)`;
             }
 
-            app.style.opacity = "1";
         })
         .catch(error => {
             console.log('Error:', error);
@@ -117,51 +128,56 @@ let isHourlyWeatherVisible = false;
 cities.forEach(city => {
     city.addEventListener('click', (e) => {
         selectedCity = e.target.innerHTML;
-        app.style.opacity = "1";
-        fetchWeatherData(selectedCity);
-        todayButton.addEventListener('click', () => {
-            const weatherDetails = document.querySelector('.weather-details');
-            if (isHourlyWeatherVisible) {
-                weatherDetails.style.display = 'none';
-                isHourlyWeatherVisible = false;
-            } else {
-                weatherDetails.style.display = 'block';
-                isHourlyWeatherVisible = true;
-                fetchHourlyWeather(selectedCity);
-            }
-        });
-        threeDayButton.addEventListener('click', () => {
-            const threeweatherdeatails = document.querySelector('.three-weather-details');
-            if (isThreeDayWeatherVisible) {
-                threeweatherdeatails.style.display = 'none';
-                isThreeDayWeatherVisible = false;
-            } else {
-                threeweatherdeatails.style.display = 'flex';
-                isThreeDayWeatherVisible = true;
-                fetchThreeDayForecast(selectedCity);
-            }
-        });
-        sevenDayButton.addEventListener('click', () => {
-            const sevenWeatherDetails = document.querySelector('.seven-weather-details');
-            if (isSevenDayWeatherVisible) {
-                sevenWeatherDetails.style.display = 'none';
-                isSevenDayWeatherVisible = false;
-            } else {
-                sevenWeatherDetails.style.display = 'flex';
-                isSevenDayWeatherVisible = true;
-                fetchSevenDayForecast(selectedCity);
-            }
-        });
-        const hideButton = document.querySelector('.hide-button');
-        hideButton.addEventListener('click', () => {
-        const weatherDetails = document.querySelector('.weather-details');
-        const threeWeatherDetails = document.querySelector('.three-weather-details');
-        const sevenWeatherDetails = document.querySelector('.seven-weather-details');
-        weatherDetails.style.display = 'none';
-        threeWeatherDetails.style.display = 'none';
-        sevenWeatherDetails.style.display = 'none';
-        });
+        fetchWeatherData(selectedCity,true);
     });
+});
+//Кнопка для інформації температури погодинно
+todayButton.addEventListener('click', () => {
+    const weatherDetails = document.querySelector('.weather-details');
+    if (isHourlyWeatherVisible) {
+        weatherDetails.style.display = 'none';
+        isHourlyWeatherVisible = false;
+        } else {
+        weatherDetails.style.display = 'block';
+        isHourlyWeatherVisible = true;
+        fetchHourlyWeather(selectedCity);
+    }
+});
+//Кнопка для інформації температури на 3 дні
+threeDayButton.addEventListener('click', () => {
+    const threeweatherdeatails = document.querySelector('.three-weather-details');
+    if (isThreeDayWeatherVisible) {
+        threeweatherdeatails.style.display = 'none';
+        isThreeDayWeatherVisible = false;
+        } else {
+        threeweatherdeatails.style.display = 'flex';
+        isThreeDayWeatherVisible = true;
+        fetchThreeDayForecast(selectedCity);
+    }
+});
+//Кнопка для інформації температури на 7 днів
+sevenDayButton.addEventListener('click', () => {
+    const sevenWeatherDetails = document.querySelector('.seven-weather-details');
+    if (isSevenDayWeatherVisible) {
+        sevenWeatherDetails.style.display = 'none';
+        isSevenDayWeatherVisible = false;
+        } else {
+        sevenWeatherDetails.style.display = 'flex';
+        isSevenDayWeatherVisible = true;
+        fetchSevenDayForecast(selectedCity);
+    }
+});
+const hideButton = document.querySelector('.hide-button');
+hideButton.addEventListener('click', () => {
+    const weatherDetails = document.querySelector('.weather-details');
+    const threeWeatherDetails = document.querySelector('.three-weather-details');
+    const sevenWeatherDetails = document.querySelector('.seven-weather-details');
+    weatherDetails.style.display = 'none';
+    isHourlyWeatherVisible = false;
+    threeWeatherDetails.style.display = 'none';
+    isThreeDayWeatherVisible = false;
+    sevenWeatherDetails.style.display = 'none';
+    isSevenDayWeatherVisible = false;
 });
 // обробник для введення міста для подальшого прогнозу погоди
 form.addEventListener('submit', (e) => {
@@ -170,9 +186,8 @@ form.addEventListener('submit', (e) => {
         alert('Please type in a city name');
     } else {
         selectedCity = search.value.trim();
-        fetchWeatherData(selectedCity);
+        fetchWeatherData(selectedCity,true);
         search.value = "";
-        app.style.opacity = "1";
     }
 
 });
@@ -196,7 +211,7 @@ unitToggleF.addEventListener('click', () => {
     isFahrenheit = true;
     unitToggleF.classList.add('active');
     unitToggleC.classList.remove('active');
-    fetchWeatherData(selectedCity);
+    fetchWeatherData(selectedCity,false);
     fetchHourlyWeather(selectedCity);
     fetchThreeDayForecast(selectedCity);
     fetchSevenDayForecast(selectedCity);
@@ -206,7 +221,7 @@ unitToggleC.addEventListener('click', () => {
     isFahrenheit = false;
     unitToggleC.classList.add('active');
     unitToggleF.classList.remove('active');
-    fetchWeatherData(selectedCity);
+    fetchWeatherData(selectedCity,false);
     fetchHourlyWeather(selectedCity);
     fetchThreeDayForecast(selectedCity);
     fetchSevenDayForecast(selectedCity);
