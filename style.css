@@ -1,4 +1,4 @@
-.body{
+body{
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background: #111;
@@ -13,6 +13,7 @@ h1, h2, h3 {
     font-size: 40px;
 }
 .unit-F{
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 15px;
     left: 30px;
@@ -32,6 +33,7 @@ h1, h2, h3 {
 background-color: #bd4b4b;
 }
 .unit-C{
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 15px;
     left: 60px;
@@ -47,6 +49,7 @@ background-color: #bd4b4b;
     color: #ffcc00;
 }
 .hide-button{
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 140px;
     left: 100px;
@@ -62,6 +65,7 @@ background-color: #bd4b4b;
     color: #e74d1e;
 }
 .today-button{
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 90px;
     left: 500px;
@@ -77,6 +81,7 @@ background-color: #bd4b4b;
     color: #e74d1e;
 }
 .three-day-button{
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 90px;
     left: 600px;
@@ -92,6 +97,7 @@ background-color: #bd4b4b;
     color: #e74d1e;
 }
 .seven-day-button{
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 90px;
     left: 700px;
@@ -144,23 +150,43 @@ background-color: #bd4b4b;
     justify-content: center;
     align-items: center;
 }
-.city-time,
-.temp,
-.weather{
-    margin: 0 1em;
+.city-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.city-time h1{
-    margin: 0;
-    margin-bottom: 0.2em;
+
+.city-time .name {
+    margin: 0 1em;
     font-size: 3em;
 }
-.temp{
-    font-size: 7em;
+
+.city-details {
+    margin-top: 0.2em;
+}
+
+.city-details small {
+    display: block;
     margin: 0;
 }
-.weather img{
+
+.weather {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.weather img {
     display: block;
-    margin: 0.5em 0;
+    margin-bottom: 0.3em;
+    width: 70px;
+    height: 70px;
+}
+
+.temp {
+    font-size: 7em;
+    margin: 0;
 }
 .panel{
     position: absolute;
@@ -181,6 +207,7 @@ background-color: #bd4b4b;
     margin-bottom: 3em;
 }
 .submit{
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 0;
     right: 50px;
@@ -199,6 +226,7 @@ background-color: #bd4b4b;
     color: #000;
 }
 .search{
+    font-family: 'Roboto', sans-serif;
     background: none;
     border: none;
     border-bottom: 1px #ccc solid;
